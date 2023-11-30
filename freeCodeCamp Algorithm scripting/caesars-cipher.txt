@@ -1,0 +1,17 @@
+function rot13(str) {
+    let decoded = ""
+    for (let i of str) {
+        let shifted = i.charCodeAt() < 65 ? i.charCodeAt() : i.charCodeAt() + 13
+        if (shifted > 90) {
+            decoded += String.fromCharCode(shifted -= 26)
+        } else {
+            decoded += String.fromCharCode(shifted)
+        }
+    }
+    return decoded
+}
+// Test Cases
+rot13("SERR PBQR PNZC")
+rot13("SERR CVMMN!")
+rot13("SERR YBIR?")
+rot13("GUR DHVPX OEBJA SBK WHZCF BIRE GUR YNML QBT.")

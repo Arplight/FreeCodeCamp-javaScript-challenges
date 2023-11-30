@@ -1,0 +1,37 @@
+function convertToRoman(num) {
+  const arabicNums = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000];
+  const romanNums = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"];
+if(arabicNums.includes(num)){
+  return romanNums[arabicNums.indexOf(num)]
+}
+else{
+  // Initial Values
+  let currentVal = num
+  let romanVal = ""
+  do{    
+    var lessArr = arabicNums.filter(n => n <= currentVal)
+    if (lessArr.length > 0) {
+    let lastIndex = lessArr.length - 1
+    let greatestNum = lessArr[lastIndex]
+    romanVal += romanNums[lastIndex]
+    currentVal -=  greatestNum  
+    }
+  }
+  while(lessArr.length  > 0 )
+  return romanVal
+}
+}
+
+
+// Test Cases
+// convertToRoman(36);
+// convertToRoman(2)
+// convertToRoman(3)
+// convertToRoman(4)
+// convertToRoman(5)
+// convertToRoman(9)
+// convertToRoman(1006)
+// convertToRoman(16)
+// convertToRoman(3999)
+// convertToRoman(2014)
+// convertToRoman(1023)

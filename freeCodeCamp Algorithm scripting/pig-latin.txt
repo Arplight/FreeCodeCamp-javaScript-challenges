@@ -1,0 +1,20 @@
+function translatePigLatin(str) {
+  let vowelWord = str.match(/^[aeoiu][a-z]+/gi)
+  if(vowelWord){
+    return`${vowelWord}way`
+  }
+  else{
+    let consonantStart = str.match(/[^aeiou]+/gi)[0]
+    let consonantVowels = str.match(/[aeoiu][a-z]+/gi)
+    let consonantWord = ""
+    consonantVowels ? consonantWord =`${consonantVowels}${consonantStart}`:consonantWord = `${consonantStart}`
+    return `${consonantWord}ay`
+  }
+}
+
+translatePigLatin("algorithm")
+translatePigLatin("eight")
+translatePigLatin("consonant");
+translatePigLatin("california")
+translatePigLatin("schwartz")
+translatePigLatin("rhythm")

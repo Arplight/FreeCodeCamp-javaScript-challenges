@@ -1,0 +1,12 @@
+function sumFibs(num) {
+  let fibArr = [0,1]
+  for(let n = 0; fibArr[n + 1] <=  num ; n++){
+    fibArr.push(fibArr[n] + fibArr[n + 1])   
+  }
+  let oddFibs = fibArr.filter(n => n % 2 !== 0 && n <= num)
+  return oddFibs.reduce((a , i) => a + i,0)
+}
+sumFibs(4);
+sumFibs(1000)
+sumFibs(10)
+sumFibs(75025)

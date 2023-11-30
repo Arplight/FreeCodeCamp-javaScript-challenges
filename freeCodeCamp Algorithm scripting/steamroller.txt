@@ -1,0 +1,20 @@
+function steamrollArray(arr) {
+ let state = true
+while (state) {
+  let resArr = []
+    resArr = arr.reduce((a,b) => a.concat(b) ,[])
+    arr = []
+    arr = resArr
+    if(!(arr.some(n => Array.isArray(n)))){
+        return  arr
+        state = false
+    }
+}
+}
+
+//Test Cases
+steamrollArray([1, [2], [3, [[4]]]]);
+steamrollArray([[["a"]], [["b"]]])
+steamrollArray([1, [2], [3, [[4]]]])
+steamrollArray([1, [], [3, [[4]]]])
+steamrollArray([1, {}, [3, [[4]]]])

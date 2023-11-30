@@ -1,0 +1,20 @@
+function smallestCommons(arr) {
+  let maxNum = Math.max(...arr)
+  let minNum = Math.min(...arr)
+  let multiple;
+  let numArr = []
+
+  for(let j = minNum; j <= maxNum; j++){
+    numArr.push(j)
+  }
+  for(let i = 1; !(numArr.every(n => multiple % n === 0)); i++){
+    multiple = i * maxNum
+}
+return multiple
+}
+
+
+smallestCommons([1,5]);
+smallestCommons([2, 10])
+smallestCommons([1, 13])
+smallestCommons([23, 18])

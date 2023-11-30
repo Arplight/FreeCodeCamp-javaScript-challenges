@@ -1,0 +1,12 @@
+function spinalCase(str) {
+let pattern = str.match(/[A-Z][a-z]+|[a-z]+/g)
+let strRes = pattern.join("-").toLocaleLowerCase()
+return strRes.trim()
+}
+
+
+spinalCase('This Is Spinal Tap');
+spinalCase("Teletubbies say Eh-oh")
+spinalCase("The_Andy_Griffith_Show")
+spinalCase("AllThe-small Things")
+spinalCase("thisIsSpinalTap") 

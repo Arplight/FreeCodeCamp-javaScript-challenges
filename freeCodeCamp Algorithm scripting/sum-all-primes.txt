@@ -1,0 +1,19 @@
+function sumPrimes(num) {
+  let arr = []
+  for(let i = 2; i <= num; i++){
+    arr.push(i)
+  }
+for (let i = 1; i < arr.length; i++) {
+  for (let j = 0; j < i; j++) {
+    if(Number.isInteger(arr[i] / arr[j])){
+        arr.splice(arr.indexOf(arr[i]),1)
+        i--
+        break;
+    }
+  }
+}
+  return arr.reduce((a,i)=>a+i,0)
+}
+
+sumPrimes(100);
+sumPrimes(9770) 

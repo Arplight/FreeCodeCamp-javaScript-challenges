@@ -1,0 +1,9 @@
+function dropElements(arr, func) {
+  let arr2 = []
+  arr.forEach(i => func(i) || func(arr2[0])? arr2.push(i): null)
+  return arr2
+}
+
+dropElements([1, 2, 3], function(n) {return n < 3; });
+dropElements([1, 2, 3, 4], function(n) {return n >= 3;})
+dropElements([0, 1, 0, 1], function(n) {return n === 1;})

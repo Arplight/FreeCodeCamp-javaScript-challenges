@@ -1,0 +1,24 @@
+function addTogether(...a) {
+    if(a.some(n => typeof n !== "number")){
+      return undefined
+    }
+    else if(a.length === 1){
+      return function sumAnd(b){
+        if(typeof b !== "number"){
+          return undefined
+        }
+        else{
+          return a[0] + b
+          }
+      }
+    }
+    else{
+      return a.reduce((sum,num) => sum + num,0)
+    }
+}
+
+
+// Test cases
+addTogether(2,3);
+addTogether(2)([3])
+addTogether(5)(7)

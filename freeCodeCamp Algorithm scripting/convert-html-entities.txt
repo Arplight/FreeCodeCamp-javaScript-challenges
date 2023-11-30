@@ -1,0 +1,23 @@
+function convertHTML(str) {
+  let pattern = str.match(/(?:[^\w\s])/g)
+  if(pattern !== null){
+    let str2 = str.replaceAll("&", "&amp;")
+    str2 = str2.replaceAll("<", "&lt;")
+    str2 = str2.replaceAll(">", "&gt;")
+    str2 = str2.replaceAll("\"", "&quot;")
+    str2 = str2.replaceAll("\'", "&apos;")
+    return str2
+  }
+  else{
+    return str
+  }
+}
+
+// Test Cases
+convertHTML("Dolce & Gabbana");
+convertHTML("Hamburgers < Pizza < Tacos")
+convertHTML("Sixty > twelve")
+convertHTML('Stuff in "quotation marks"')
+convertHTML("Schindler's List")
+convertHTML("<>")
+convertHTML("abc")

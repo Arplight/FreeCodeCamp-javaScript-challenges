@@ -1,0 +1,5 @@
+function whatIsInAName(collection, source) {
+  // What's in a name?  
+  return collection
+    .filter((obj) => JSON.stringify(Object.assign(JSON.parse(JSON.stringify(obj)), source)) === JSON.stringify(obj));
+}

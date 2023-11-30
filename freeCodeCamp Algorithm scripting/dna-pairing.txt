@@ -1,0 +1,21 @@
+function pairElement(str) {
+let arr = str.match(/\w/g)
+for(let n in arr){ 
+  if (arr[n] == "G") {
+    arr.splice(n,1,["G", "C"]);
+  }
+  else if(arr[n] == "C"){
+    arr.splice(n,1,["C", "G"]);
+  }
+  else if(arr[n] == "A"){
+    arr.splice(n,1,["A", "T"]);
+  }    
+  else if(arr[n] == "T"){
+    arr.splice(n,1,["T", "A"]);
+  }  
+}
+return arr;
+}
+pairElement("ATCGA")
+pairElement("CTCTA")
+pairElement("TTGAG")

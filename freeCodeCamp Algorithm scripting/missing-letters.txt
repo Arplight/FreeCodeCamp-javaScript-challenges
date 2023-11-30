@@ -1,0 +1,13 @@
+function fearNotLetter(str) {
+  for(let n = 0; n < str.length; n++){
+    if (str.charCodeAt(n + 1) - str.charCodeAt(n) > 1){
+      let missing = String.fromCharCode(str.charCodeAt(n) + 1)
+      return missing
+    }
+}
+}
+
+fearNotLetter("abce");
+fearNotLetter("abcdefghjklmno")
+fearNotLetter("stvwx")
+fearNotLetter("bcdf")

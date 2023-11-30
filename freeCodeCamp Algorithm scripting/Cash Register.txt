@@ -1,0 +1,73 @@
+function checkCashRegister(price, cash, cid) {
+    const currencyValues = {
+        "PENNY": 0.01, "NICKEL": 0.05, "DIME": 0.1,
+        "QUARTER": 0.25, "ONE": 1, "FIVE": 5,
+        "TEN": 10, "TWENTY": 20, "ONE HUNDRED": 100
+    };
+
+    let change = cash - price;
+    let totalCashInDrawer = cid.reduce((acc, denomination) => acc + denomination[1], 0).toFixed(2);
+
+    if (change > totalCashInDrawer) return { status: "INSUFFICIENT_FUNDS", change: [] };
+    if (change.toFixed(2) === totalCashInDrawer) return { status: "CLOSED", change: cid };
+
+    cid = cid.reverse();
+    let changeArray = [];
+
+    for (let [denom, totalDenomination] of cid) {
+        const denomValue = currencyValues[denom];
+        let denomAmount = (totalDenomination / denomValue).toFixed(0) * denomValue;
+        let returnedDenomination = 0;
+
+        while (change >= denomValue && denomAmount > 0) {
+            change -= denomValue;
+            change = change.toFixed(2);
+            denomAmount -= denomValue;
+            returnedDenomination += denomValue;
+        }
+
+        if (returnedDenomination > 0) {
+            changeArray.push([denom, returnedDenomination]);
+        }
+    }
+
+    if (change > 0) return { status: "INSUFFICIENT_FUNDS", change: [] };
+    return { status: "OPEN", change: changeArray };
+}
+
+// Test cases
+console.log(checkCashRegister(19.5, 20, [
+    ["PENNY", 1.01],
+    ["NICKEL", 2.05],
+    ["DIME", 3.1],
+    ["QUARTER", 4.25],
+    ["ONE", 90],
+    ["FIVE", 55],
+    ["TEN", 20],
+    ["TWENTY", 60],
+    ["ONE HUNDRED", 100]
+]));
+
+console.log(checkCashRegister(19.5, 20, [
+    ["PENNY", 0.01],
+    ["NICKEL", 0],
+    ["DIME", 0],
+    ["QUARTER", 0],
+    ["ONE", 1],
+    ["FIVE", 0],
+    ["TEN", 0],
+    ["TWENTY", 0],
+    ["ONE HUNDRED", 0]
+]));
+
+console.log(checkCashRegister(19.5, 20, [
+    ["PENNY", 0.01],
+    ["NICKEL", 0],
+    ["DIME", 0],
+    ["QUARTER", 0],
+    ["ONE", 1],
+    ["FIVE", 0],
+    ["TEN", 0],
+    ["TWENTY", 0],
+    ["ONE HUNDRED", 100]
+]));
