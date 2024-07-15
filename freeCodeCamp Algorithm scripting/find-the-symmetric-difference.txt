@@ -1,0 +1,20 @@
+function sym(...args) {
+let lastDifference = args[0];
+
+  for(let i = 0; args.length - i >= 2; i++){
+    let diffArr = [];
+    let resultArr = [];
+    const nextIndex = Number(i) + 1;
+    const firstDiff = lastDifference.filter(n => !args[nextIndex].includes(n))
+    const secondDiff = args[nextIndex].filter(n => !lastDifference.includes(n))
+    
+    diffArr = firstDiff.concat(secondDiff)
+    diffArr.filter(n => !resultArr.includes(n) && resultArr.push(n))
+    lastDifference = resultArr.sort()
+  }
+return lastDifference;
+}
+
+// sym([1, 2, 3], [5, 2, 1, 4]);
+// sym([1, 2, 3, 3], [5, 2, 1, 4]);
+sym([1, 2, 5], [2, 3, 5], [3, 4, 5]);

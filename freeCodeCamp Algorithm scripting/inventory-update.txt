@@ -1,0 +1,12 @@
+function updateInventory(arr1, arr2) {
+    let firstArr = JSON.parse(JSON.stringify(arr1)); //DEEP COPY
+    let resultArr;
+
+    firstArr.map(i => {arr2.filter(c => c.includes(i[1]) && (i[0] = i[0] + c[0]) )} )//STEP#1  
+    arr2.forEach(i => !firstArr.flat(1).includes(i[1]) && firstArr.push(i)) //STEP#2
+    resultArr = firstArr.sort((a ,b) => a[1].localeCompare(b[1])) //STEP#3
+    
+    return resultArr
+    }
+
+updateInventory([], [[2, "Hair Pin"], [3, "Half-Eaten Apple"], [67, "Bowling Ball"], [7, "Toothpaste"]]) 

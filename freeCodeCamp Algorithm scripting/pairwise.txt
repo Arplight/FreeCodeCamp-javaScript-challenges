@@ -1,0 +1,23 @@
+// RULES
+// #1 The sum of the pair ==> second argument
+// #2 The pair shouldn't be repeated
+// #3 The sum of the pair indices should be the least compared to the other pairs
+
+function pairwise(arr, arg) {
+  let indicesArr = [];
+
+  if (arr.length > 0) {
+    for (let i = 0; i < arr.length - 1; i++) {
+      for (let x = i + 1; x < arr.length; x++) {
+        if (arr[x] + arr[i] === arg && !indicesArr.some(c => [x, i].includes(c))) {
+          indicesArr = [...indicesArr, x, i];
+        }
+      }
+    }
+    indicesArr = indicesArr.reduce((a, b) => a + b);
+  } else {
+    indicesArr = 0;
+  }
+
+  return indicesArr;
+}
