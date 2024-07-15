@@ -1,0 +1,22 @@
+function selectionSort(arr) {
+  for(let i = 0; i < arr.length - 1; i++){
+    let arr2 = arr.slice(i+1)
+    let leastRef = arr2[0];
+    let leastIndex = 0;
+
+    for(let x = 0; x < arr2.length; x++){
+      if(arr2[x] <= leastRef){
+        leastRef = arr2[x]; 
+        leastIndex = (arr.length - arr2.length) + x;
+      }
+    }
+    if(leastRef < arr[i]){
+        arr[leastIndex] = arr[i];
+        arr[i] = leastRef;
+    }
+  }
+
+  return arr
+}
+
+selectionSort([1,4,2,8,345,123,43,32,5643,63,123,43,2,55,1,234,92])

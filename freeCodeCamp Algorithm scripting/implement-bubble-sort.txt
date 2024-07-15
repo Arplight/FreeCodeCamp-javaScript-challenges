@@ -1,0 +1,23 @@
+function bubbleSort(arr) {
+  let isSorted = false;
+
+  for (let x = 0; isSorted === false; x++) {
+    let swapsCount = 0;
+
+    for (let i = 0; i < arr.length - 1; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let numRef = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = numRef;
+        swapsCount++;
+      }
+
+      if (swapsCount === 0 && (i + 2 === arr.length)) {
+        isSorted = true;
+        return arr;
+      }
+    }
+  }
+}
+
+bubbleSort([1, 4, 2, 8, 345, 123, 43, 32, 5643, 63, 123, 43, 2, 55, 1, 234, 92]);

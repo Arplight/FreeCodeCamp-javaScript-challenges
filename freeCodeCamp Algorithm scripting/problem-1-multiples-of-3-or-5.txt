@@ -1,0 +1,16 @@
+function multiplesOf3Or5(number) {
+  let multiplesArr = [];
+  let testArr = [3, 5];
+
+  for(let i = 1; i < number; i++){
+    testArr.forEach(x => {
+      const multiply = x*i;
+      !multiplesArr.includes(multiply) && multiply < number && multiplesArr.push(multiply); 
+    })    
+  }
+  
+  const result = multiplesArr.reduce((a,b) => a+b);
+  return result
+}
+
+multiplesOf3Or5(49);

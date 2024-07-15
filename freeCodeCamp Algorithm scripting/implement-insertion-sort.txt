@@ -1,0 +1,15 @@
+function insertionSort(arr) {
+  for(let i = 0; i < arr.length; i++){
+      let arr2 = arr.slice(0,i);
+      let currentNum = arr[i];
+
+      for(let x = 0; x < arr2.length; x++){
+        if(arr[i] < arr2[x]){
+          arr.splice(i,1);
+          arr = [arr.slice(0, x), currentNum, arr.slice(x)].flat();
+        }
+      }
+  }
+ return arr;
+}
+insertionSort([5, 4, 33, 2, 8])
