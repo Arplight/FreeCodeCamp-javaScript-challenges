@@ -1,0 +1,17 @@
+function fiboEvenSum(limit) {
+  let a = 0;
+  let b = 1;
+  let sum = 0;
+
+  while (b <= limit) {
+    let next = a + b;
+    a = b;
+    b = next;
+    
+    if (a % 2 === 0) {
+      sum += a;
+    }
+  }
+
+  return sum;
+}
